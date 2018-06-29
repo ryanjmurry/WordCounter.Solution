@@ -15,9 +15,9 @@ namespace WordCounter
             return _targetWord;
         }
 
-        public void SetTargetWord(string input)
+        public void SetTargetWord(string targetWord)
         {
-            _targetWord = input;
+            _targetWord = targetWord;
         }
 
         public bool CheckTargetWordForPunctuation()
@@ -39,6 +39,16 @@ namespace WordCounter
                 _targetWord = _targetWord.ToLower();
             }
             return _targetWord;
+        }
+
+        public void SetSearchPhrase(string searchPhrase)
+        {
+            _searchPhrase = searchPhrase;
+        }
+
+        public string GetSearchPhrase()
+        {
+            return _searchPhrase;
         }
     }
 }

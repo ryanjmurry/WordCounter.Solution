@@ -62,5 +62,19 @@ namespace WordCounter.Tests
             //Assert
             Assert.AreEqual("can", result);
         }
+
+        [TestMethod]
+        public void GetSetSearchPhrase_GetsAndSetsSearchPhrase_String()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+            newObject.SetSearchPhrase("I can open the can of tuna.");
+
+            //Act
+            string result = newObject.GetSearchPhrase();
+
+            //Assert
+            Assert.AreEqual("I can open the can of tuna.", result);
+        }
     }
 }
