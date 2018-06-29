@@ -12,6 +12,7 @@ namespace WordCounter
         private int _arrayEnd;
         private int _arrayRange;
         private List<string> _searchList = new List<string>() { };
+        private char[] _searchArray;
         private List<string> _cleanSearchList = new List<string>() { };
         private int _matches;
 
@@ -64,63 +65,83 @@ namespace WordCounter
             return _searchList;
         }
 
-        public void IncrementArrayStart()
-        {
-            _arrayStart++;
-        }
 
-        public int GetArrayStart()
-        {
-            return _arrayStart;
-        }
+        //**Attempted to catch edge cases but sloppy and breaking**//
+        //**Looking to fix later this weekend/tonight**//
 
-        public void ReduceArrayEnd()
-        {
-            _arrayEnd--;
-        }
-
-        public int GetArrayEnd()
-        {
-            return _arrayEnd;
-        }
-
-        public void SetArrayRange()
-        {
-            _arrayRange = (_arrayEnd - _arrayStart) + 1;
-        }
-
-
-        public int GetArrayRange()
-        {
-            return _arrayRange;
-        }
-
+        // public void IncrementArrayStart()
+        // {
+        //     _arrayStart++;
+        // }
+        //
+        // public int GetArrayStart()
+        // {
+        //     return _arrayStart;
+        // }
+        //
+        // public void SetArrayEnd()
+        // {
+        //     _arrayEnd = _searchArray.Length - 1;
+        // }
+        //
+        // public void ReduceArrayEnd()
+        // {
+        //     _arrayEnd--;
+        // }
+        //
+        // public int GetArrayEnd()
+        // {
+        //     return _arrayEnd;
+        // }
+        //
+        // public void SetArrayRange()
+        // {
+        //     _arrayRange = (_arrayEnd - _arrayStart) + 1;
+        // }
+        //
+        //
+        // public int GetArrayRange()
+        // {
+        //     return _arrayRange;
+        // }
+        //
+        // public void ResetArrayCounters()
+        // {
+        //     _arrayStart = 0;
+        //     _arrayEnd = 0;
+        //     _arrayRange = 0;
+        // }
+        //
+        // public char[] GetSearchArray()
+        // {
+        //     return _searchArray;
+        // }
+        //
         // public void SetCleanSearchList()
         // {
         //     foreach(string word in _searchList)
         //     {
-        //         char[] wordArray = word.ToCharArray();
-        //         _arrayStart = 0;
-        //         _arrayEnd = wordArray.Length - 1;
-        //         _arrayRange = 0;
-        //         while(Char.IsPunctuation(wordArray[_arrayStart]))
+        //         _searchArray = word.ToCharArray();
+        //         this.SetArrayEnd();
+        //         while(Char.IsPunctuation(_searchArray[_arrayStart]))
         //         {
-        //             _arrayStart++;
+        //             this.IncrementArrayStart();
         //         }
-        //         while(Char.IsPunctuation(wordArray[_arrayEnd]))
+        //         while(Char.IsPunctuation(_searchArray[_arrayEnd]))
         //         {
-        //             _arrayEnd--;
+        //             this.ReduceArrayEnd();
         //         }
-        //         _arrayRange = (_arrayEnd - _arrayStart) + 1;
-        //         string cleanWord = new String(wordArray, _arrayStart, _arrayRange);
+        //         this.SetArrayRange();
+        //         String cleanWord = new String(_searchArray, _arrayStart, _arrayEnd);
         //         _cleanSearchList.Add(cleanWord);
+        //         // this.ResetArrayCounters();
         //     }
         // }
-
-        public List<string> GetCleanSearchList()
-        {
-            return _cleanSearchList;
-        }
+        //
+        // public List<string> GetCleanSearchList()
+        // {
+        //     return _cleanSearchList;
+        // }
 
         public void IncrementMatches()
         {
