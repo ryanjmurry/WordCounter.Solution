@@ -67,5 +67,15 @@ namespace WordCounter
         {
             return _searchList;
         }
+
+        public void IncrementMatches()
+        {
+            _matches++;
+        }
+
+        public int GetMatches()
+        {
+            return _matches;
+        }
     }
 }

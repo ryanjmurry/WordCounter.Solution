@@ -108,5 +108,19 @@ namespace WordCounter.Tests
             //Assert
             CollectionAssert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void IncrementMatches_IncrementNumberOfMatches_Int()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+
+            //Act
+            newObject.IncrementMatches();
+            int result = newObject.GetMatches();
+
+            //Assert
+            Assert.AreEqual(1, result);
+        }
     }
 }
