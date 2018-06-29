@@ -108,6 +108,79 @@ namespace WordCounter.Tests
         }
 
         [TestMethod]
+        public void IncrementArrayStart_IncrementStartingIndexOfArray_Int()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+
+            //Act
+            newObject.IncrementArrayStart();
+            int result = newObject.GetArrayStart();
+
+            //Assert
+            Assert.AreEqual(1, result);
+        }
+
+        [TestMethod]
+        public void ReduceArrayEnd_ReduceEndingIndexOfArray_Int()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+
+            //Act
+            newObject.ReduceArrayEnd();
+            int result = newObject.GetArrayEnd();
+
+            //Assert
+            Assert.AreEqual(-1, result);
+        }
+
+        [TestMethod]
+        public void SetArrayRange_SetRangeToTargetInArray_Int()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+
+            //Act
+            newObject.IncrementArrayStart();
+            newObject.IncrementArrayStart();
+            newObject.ReduceArrayEnd();
+            newObject.ReduceArrayEnd();
+            newObject.SetArrayRange();
+            int result = newObject.GetArrayRange();
+
+            //Assert
+            Assert.AreEqual(-3, result);
+        }
+
+
+
+        // [TestMethod]
+        // public void GetSetCleanSearchList_GetsAndSetsCleanSearchListFromSearchList_List()
+        // {
+        //     //Arrange
+        //     RepeatCounter newObject = new RepeatCounter();
+        //     newObject.SetSearchList("i 'can' open the can of tuna.");
+        //
+        //     //Act
+        //     newObject.SetCleanSearchList();
+        //     List<string> expected = new List<string>() { "i", "can", "open", "the", "can", "of", "tuna" };
+        //     List<string> result = newObject.GetSearchList();
+        //     foreach(string word in expected)
+        //     {
+        //         Console.WriteLine(word);
+        //     }
+        //     Console.WriteLine("");
+        //     foreach(string word in result)
+        //     {
+        //         Console.WriteLine(word);
+        //     }
+
+            //Assert
+        //     CollectionAssert.AreEqual(expected, result);
+        // }
+
+        [TestMethod]
         public void IncrementMatches_IncrementNumberOfMatches_Int()
         {
             //Arrange
