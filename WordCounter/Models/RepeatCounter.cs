@@ -31,5 +31,14 @@ namespace WordCounter
             }
             return true;
         }
+
+        public string MakeTargetWordLowerCase()
+        {
+            if (this.CheckTargetWordForPunctuation())
+            {
+                _targetWord = _targetWord.ToLower();
+            }
+            return _targetWord;
+        }
     }
 }
