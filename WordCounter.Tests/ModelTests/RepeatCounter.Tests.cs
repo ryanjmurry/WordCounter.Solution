@@ -50,14 +50,13 @@ namespace WordCounter.Tests
         }
 
         [TestMethod]
-        public void SetTargetWordToLower_SetsTargetWordToLowerCase_String()
+        public void SetTargetWord_SetsTargetWordToLowerCase_String()
         {
             //Arrange
             RepeatCounter newObject = new RepeatCounter();
             newObject.SetTargetWord("CAN");
 
             //Act
-            newObject.SetTargetWordToLower();
             string result = newObject.GetTargetWord();
 
             //Assert
@@ -124,7 +123,7 @@ namespace WordCounter.Tests
         }
 
         [TestMethod]
-        public void GetNumberOfMatches_GetNumberOfMatches_Int()
+        public void SetGetMatches_SetAndGetNumberOfMatches_Int()
         {
             //Arrange
             RepeatCounter newObject = new RepeatCounter();
@@ -133,11 +132,39 @@ namespace WordCounter.Tests
             newObject.SetSearchList();
 
             //Act
-            newObject.SetNumberOfMatches();
+            newObject.SetMatches();
             int result = newObject.GetMatches();
 
             //Assert
             Assert.AreEqual(2, result);
+        }
+
+        [TestMethod]
+        public void NumberOfMatches_NumberOfMatchesInSearchList_Int()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+
+            //Act
+            newObject.NumberOfMatches("CAN", "I CAN OPEN A CAN OF TUNA");
+            int result = newObject.GetMatches();
+
+            //Assert
+            Assert.AreEqual(2, result);
+        }
+
+        [TestMethod]
+        public void NumberOfMatches_NumberOfMatchesInSearchListWithPunctuation_Int()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+
+            //Act
+            newObject.NumberOfMatches("CAN", "I 'CAN' OPEN A CAN OF TUNA.");
+            int result = newObject.GetMatches();
+
+            //Assert
+            Assert.AreEqual(1, result);
         }
     }
 }

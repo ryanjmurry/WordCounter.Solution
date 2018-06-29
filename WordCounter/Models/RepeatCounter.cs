@@ -18,7 +18,7 @@ namespace WordCounter
 
         public void SetTargetWord(string targetWord)
         {
-            _targetWord = targetWord;
+            _targetWord = targetWord.ToLower();
         }
 
         public bool CheckTargetWordForPunctuation()
@@ -31,14 +31,6 @@ namespace WordCounter
                 }
             }
             return true;
-        }
-
-        public void SetTargetWordToLower()
-        {
-            if (this.CheckTargetWordForPunctuation())
-            {
-                _targetWord = _targetWord.ToLower();
-            }
         }
 
         public void SetSearchPhrase(string searchPhrase)
@@ -78,7 +70,7 @@ namespace WordCounter
             return _matches;
         }
 
-        public void SetNumberOfMatches()
+        public void SetMatches()
         {
             foreach(string testWord in _searchList)
             {
@@ -87,6 +79,15 @@ namespace WordCounter
                     this.IncrementMatches();
                 }
             }
+        }
+
+        public int NumberOfMatches(string targetWord, string searchPhrase)
+        {
+            this.SetTargetWord(targetWord);
+            this.SetSearchPhrase(searchPhrase);
+            this.SetSearchList();
+            this.SetMatches();
+            return _matches;
         }
     }
 }
