@@ -97,11 +97,10 @@ namespace WordCounter.Tests
         {
             //Arrange
             RepeatCounter newObject = new RepeatCounter();
-            newObject.SetSearchPhrase("I can open the can of tuna.");
+            newObject.SetSearchList("I can open the can of tuna.");
 
             //Act
             List<string> expected = new List<string>() { "i", "can", "open", "the", "can", "of", "tuna." };
-            newObject.SetSearchList();
             List<string> result = newObject.GetSearchList();
 
             //Assert
@@ -128,8 +127,7 @@ namespace WordCounter.Tests
             //Arrange
             RepeatCounter newObject = new RepeatCounter();
             newObject.SetTargetWord("can");
-            newObject.SetSearchPhrase("I can open a can of tuna.");
-            newObject.SetSearchList();
+            newObject.SetSearchList("I can open a can of tuna.");
 
             //Act
             newObject.SetMatches();

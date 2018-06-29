@@ -45,12 +45,12 @@ namespace WordCounter
 
         public void SetSearchPhraseToLower()
         {
-
             _searchPhrase = this.GetSearchPhrase().ToLower();
         }
 
-        public void SetSearchList()
+        public void SetSearchList(string searchPhrase)
         {
+            this.SetSearchPhrase(searchPhrase);
             this.SetSearchPhraseToLower();
             _searchList = _searchPhrase.Split(' ').ToList();
         }
@@ -84,8 +84,7 @@ namespace WordCounter
         public int NumberOfMatches(string targetWord, string searchPhrase)
         {
             this.SetTargetWord(targetWord);
-            this.SetSearchPhrase(searchPhrase);
-            this.SetSearchList();
+            this.SetSearchList(searchPhrase);
             this.SetMatches();
             return _matches;
         }
