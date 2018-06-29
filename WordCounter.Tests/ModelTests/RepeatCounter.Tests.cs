@@ -122,5 +122,22 @@ namespace WordCounter.Tests
             //Assert
             Assert.AreEqual(1, result);
         }
+
+        [TestMethod]
+        public void GetNumberOfMatches_GetNumberOfMatches_Int()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+            newObject.SetTargetWord("can");
+            newObject.SetSearchPhrase("I can open a can of tuna.");
+            newObject.SetSearchList();
+
+            //Act
+            newObject.SetNumberOfMatches();
+            int result = newObject.GetMatches();
+
+            //Assert
+            Assert.AreEqual(2, result);
+        }
     }
 }

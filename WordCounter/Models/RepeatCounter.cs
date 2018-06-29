@@ -77,5 +77,16 @@ namespace WordCounter
         {
             return _matches;
         }
+
+        public void SetNumberOfMatches()
+        {
+            foreach(string testWord in _searchList)
+            {
+                if (testWord == _targetWord)
+                {
+                    this.IncrementMatches();
+                }
+            }
+        }
     }
 }
