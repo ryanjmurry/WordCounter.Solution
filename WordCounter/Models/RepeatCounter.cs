@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WordCounter
 {
@@ -52,7 +53,19 @@ namespace WordCounter
 
         public void SetSearchPhraseToLower()
         {
-            _searchPhrase = _searchPhrase.ToLower();
+
+            _searchPhrase = this.GetSearchPhrase().ToLower();
+        }
+
+        public void SetSearchList()
+        {
+            this.SetSearchPhraseToLower();
+            _searchList = _searchPhrase.Split(' ').ToList();
+        }
+
+        public List<string> GetSearchList()
+        {
+            return _searchList;
         }
     }
 }

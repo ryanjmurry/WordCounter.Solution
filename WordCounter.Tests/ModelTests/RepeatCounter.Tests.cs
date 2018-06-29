@@ -92,5 +92,21 @@ namespace WordCounter.Tests
             //Assert
             Assert.AreEqual("i can open the can of tuna.", result);
         }
+
+        [TestMethod]
+        public void GetSetSearchList_GetsAndSetsSearchListFromSearchPhrase_List()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+            newObject.SetSearchPhrase("I can open the can of tuna.");
+
+            //Act
+            List<string> expected = new List<string>() { "i", "can", "open", "the", "can", "of", "tuna." };
+            newObject.SetSearchList();
+            List<string> result = newObject.GetSearchList();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, result);
+        }
     }
 }
