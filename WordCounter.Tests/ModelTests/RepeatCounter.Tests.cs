@@ -20,5 +20,33 @@ namespace WordCounter.Tests
             //Assert
             Assert.AreEqual("can", result);
         }
+
+        [TestMethod]
+        public void CheckTargetWordForPunctuation_ChecksTargetWordForPunctuation_True()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+            newObject.SetTargetWord("can");
+
+            //Act
+            bool result = newObject.CheckTargetWordForPunctuation();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void CheckTargetWordForPunctuation_ChecksTargetWordForPunctuation_False()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+            newObject.SetTargetWord("c@n");
+
+            //Act
+            bool result = newObject.CheckTargetWordForPunctuation();
+
+            //Assert
+            Assert.AreEqual(false, result);
+        }
     }
 }

@@ -19,5 +19,17 @@ namespace WordCounter
         {
             _targetWord = input;
         }
+
+        public bool CheckTargetWordForPunctuation()
+        {
+            foreach(char letter in _targetWord)
+            {
+                if(Char.IsPunctuation(letter))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
