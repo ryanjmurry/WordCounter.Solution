@@ -50,14 +50,15 @@ namespace WordCounter.Tests
         }
 
         [TestMethod]
-        public void MakeTargetWordLowerCase_MakesTargetWordLowerCase_String()
+        public void SetTargetWordLowerCase_SetTargetWordToLowerCase_String()
         {
             //Arrange
             RepeatCounter newObject = new RepeatCounter();
             newObject.SetTargetWord("CAN");
 
             //Act
-            string result = newObject.MakeTargetWordLowerCase();
+            newObject.SetTargetWordLowerCase();
+            string result = newObject.GetTargetWord();
 
             //Assert
             Assert.AreEqual("can", result);

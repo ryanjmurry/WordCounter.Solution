@@ -32,13 +32,12 @@ namespace WordCounter
             return true;
         }
 
-        public string MakeTargetWordLowerCase()
+        public void SetTargetWordLowerCase()
         {
             if (this.CheckTargetWordForPunctuation())
             {
                 _targetWord = _targetWord.ToLower();
             }
-            return _targetWord;
         }
 
         public void SetSearchPhrase(string searchPhrase)
