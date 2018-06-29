@@ -8,12 +8,13 @@ namespace WordCounter
     {
         private string _targetWord;
         private string _searchPhrase;
-        private int _arrayStart;
-        private int _arrayEnd;
-        private int _arrayRange;
+        private int _arrayStart; //possible edge case properties
+        private int _arrayEnd; //possible edge case properties
+        private int _arrayRange; //possible edge case properties
         private List<string> _searchList = new List<string>() { };
-        private char[] _searchArray;
-        private List<string> _cleanSearchList = new List<string>() { };
+        private char[] _searchArray; //possible edge case properties
+        private string _cleanWord;
+        private List<string> _cleanSearchList = new List<string>() { }; //possible edge case properties
         private int _matches;
 
         public string GetTargetWord()
@@ -66,8 +67,19 @@ namespace WordCounter
         }
 
 
-        //**Attempted to catch edge cases but sloppy and breaking**//
-        //**Looking to fix later this weekend/tonight**//
+        public void SetArrayEnd(string word)
+        {
+            _searchArray = word.ToCharArray();
+            _arrayEnd = _searchArray.Length - 1;
+        }
+
+        public int GetArrayEnd()
+        {
+            return _arrayEnd;
+        }
+
+        //------------Buggy Edge Case Methods-----------------//
+        //-----------Program Meets Minimum Requirements----//
 
         // public void IncrementArrayStart()
         // {
@@ -79,26 +91,15 @@ namespace WordCounter
         //     return _arrayStart;
         // }
         //
-        // public void SetArrayEnd()
-        // {
-        //     _arrayEnd = _searchArray.Length - 1;
-        // }
-        //
         // public void ReduceArrayEnd()
         // {
         //     _arrayEnd--;
-        // }
-        //
-        // public int GetArrayEnd()
-        // {
-        //     return _arrayEnd;
         // }
         //
         // public void SetArrayRange()
         // {
         //     _arrayRange = (_arrayEnd - _arrayStart) + 1;
         // }
-        //
         //
         // public int GetArrayRange()
         // {
@@ -132,8 +133,8 @@ namespace WordCounter
         //             this.ReduceArrayEnd();
         //         }
         //         this.SetArrayRange();
-        //         String cleanWord = new String(_searchArray, _arrayStart, _arrayEnd);
-        //         _cleanSearchList.Add(cleanWord);
+        //         // _cleanWord = new String(_searchArray, _arrayStart, _arrayRange);
+        //         _cleanSearchList.Add(new String(_searchArray, _arrayStart, _arrayRange));
         //         // this.ResetArrayCounters();
         //     }
         // }
@@ -142,6 +143,8 @@ namespace WordCounter
         // {
         //     return _cleanSearchList;
         // }
+
+        //------------End of Buggy Edge Case Methods-----------------//
 
         public void IncrementMatches()
         {

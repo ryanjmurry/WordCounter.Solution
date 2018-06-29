@@ -24,6 +24,12 @@ A program that checks how frequently a word appears in a given string.
 | Compares the test word to each word in the clean list | "I can open the can of tuna" | 1. "can" vs. "i" = false </br> 2. "can" vs. "can" = true </br> 3. "can" vs. "open" = false </br> 4. "can" vs. "the" = false </br> 5. "can" vs. "can" = true </br> 6. "can" vs. "of" = false </br> 7. "can" vs. "tuna" = false </br> | If it is true, it will signify that there is a match in the clean list |
 | Determines the number of times the target word appears in the clean list| 1. "I can open the can of tuna." </br> 2. "I 'can' open the can of tuna." | 1. matches = 2 </br> 2. matches = 1 | Allows program to return the number of matches in a given phrase to a target word |
 
+## Known Bugs
+
+* Not able to handle edge case scenarios, such as when a word is wrapped in parentheses or if the word is followed by a period or comma
+
+* Handles first 6 specs and last spec, although it will not handle edge cases
+
 
 ## Setup on OSX
 

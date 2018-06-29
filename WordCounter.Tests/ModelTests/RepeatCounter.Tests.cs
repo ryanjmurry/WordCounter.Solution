@@ -108,6 +108,51 @@ namespace WordCounter.Tests
         }
 
         [TestMethod]
+        public void SetArrayEnd_SetsIndexAtEndOfArrayToSearchAt_Int()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+
+            //Act
+            newObject.SetArrayEnd("'can'");
+            int result = newObject.GetArrayEnd();
+
+            //Assert
+            Assert.AreEqual(4, result);
+        }
+
+        //------------Buggy Edge Case Tests-----------------//
+
+        // [TestMethod]
+        // public void GetSetCleanSearchList_GetsAndSetsCleanSearchListFromSearchList_List()
+        // {
+        //     //Arrange
+        //     RepeatCounter newObject = new RepeatCounter();
+        //     newObject.SetSearchList("'can'");
+        //
+        //     //Act
+        //     newObject.SetCleanSearchList();
+        //     List<string> expected = new List<string>() { "can" };
+        //     List<string> result = newObject.GetSearchList();
+        //     foreach(string word in expected)
+        //     {
+        //         Console.WriteLine(word);
+        //     }
+        //     Console.WriteLine("");
+        //     foreach(string word in result)
+        //     {
+        //         Console.WriteLine(word);
+        //     }
+        //     Console.WriteLine(newObject.GetArrayStart());
+        //     Console.WriteLine(newObject.GetArrayEnd());
+        //
+        //
+        //     CollectionAssert.AreEqual(expected, result);
+        // }
+
+        //------------End of Buggy Edge Case Tests-----------------//
+
+        [TestMethod]
         public void IncrementMatches_IncrementNumberOfMatches_Int()
         {
             //Arrange
