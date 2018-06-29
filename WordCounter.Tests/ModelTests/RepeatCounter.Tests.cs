@@ -146,8 +146,7 @@ namespace WordCounter.Tests
             RepeatCounter newObject = new RepeatCounter();
 
             //Act
-            newObject.NumberOfMatches("CAN", "I CAN OPEN A CAN OF TUNA");
-            int result = newObject.GetMatches();
+            int result = newObject.NumberOfMatches("CAN", "I CAN OPEN A CAN OF TUNA");
 
             //Assert
             Assert.AreEqual(2, result);
@@ -160,8 +159,7 @@ namespace WordCounter.Tests
             RepeatCounter newObject = new RepeatCounter();
 
             //Act
-            newObject.NumberOfMatches("CAN", "I 'CAN' OPEN A CAN OF TUNA.");
-            int result = newObject.GetMatches();
+            int result = newObject.NumberOfMatches("CAN", "I 'CAN' OPEN A CAN OF TUNA.");
 
             //Assert
             Assert.AreEqual(1, result);
