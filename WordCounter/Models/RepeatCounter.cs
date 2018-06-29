@@ -5,9 +5,19 @@ namespace WordCounter
 {
     public class RepeatCounter
     {
-        public bool DoIPass()
+        private string _targetWord;
+        private string _searchPhrase;
+        private List<string> _searchList = new List<string>() { };
+        private int _matches;
+
+        public string GetTargetWord()
         {
-            return true;
+            return _targetWord;
+        }
+
+        public void SetTargetWord(string input)
+        {
+            _targetWord = input;
         }
     }
 }

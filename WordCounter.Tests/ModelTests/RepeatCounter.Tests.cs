@@ -8,10 +8,17 @@ namespace WordCounter.Tests
     public class RepeatCounterTest
     {
         [TestMethod]
-        public void DoIPass_TestToSeeIfThisWorks_True()
+        public void GetSetTargetWord_GetsAndSetsTargetWord_String()
         {
+            //Arrange
             RepeatCounter newObject = new RepeatCounter();
-            Assert.AreEqual(true, newObject.DoIPass());
+            newObject.SetTargetWord("can");
+
+            //Act
+            string result = newObject.GetTargetWord();
+
+            //Assert
+            Assert.AreEqual("can", result);
         }
     }
 }
