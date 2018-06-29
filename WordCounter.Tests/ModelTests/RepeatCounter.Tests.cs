@@ -50,14 +50,14 @@ namespace WordCounter.Tests
         }
 
         [TestMethod]
-        public void SetTargetWordLowerCase_SetTargetWordToLowerCase_String()
+        public void SetTargetWordToLower_SetsTargetWordToLowerCase_String()
         {
             //Arrange
             RepeatCounter newObject = new RepeatCounter();
             newObject.SetTargetWord("CAN");
 
             //Act
-            newObject.SetTargetWordLowerCase();
+            newObject.SetTargetWordToLower();
             string result = newObject.GetTargetWord();
 
             //Assert
@@ -76,6 +76,21 @@ namespace WordCounter.Tests
 
             //Assert
             Assert.AreEqual("I can open the can of tuna.", result);
+        }
+
+        [TestMethod]
+        public void SetSearchPhraseToLower_SetsSearchPhraseToLowerCase_String()
+        {
+            //Arrange
+            RepeatCounter newObject = new RepeatCounter();
+            newObject.SetSearchPhrase("I CAN OPEN THE CAN OF TUNA.");
+
+            //Act
+            newObject.SetSearchPhraseToLower();
+            string result = newObject.GetSearchPhrase();
+
+            //Assert
+            Assert.AreEqual("i can open the can of tuna.", result);
         }
     }
 }
