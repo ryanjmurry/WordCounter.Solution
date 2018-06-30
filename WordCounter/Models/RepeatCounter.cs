@@ -9,6 +9,9 @@ namespace WordCounter
         private string _targetWord = "";
         private string _searchPhrase = "";
         private List<string> _searchList = new List<string>() { };
+        private int _start = 0;
+        private int _end = 0;
+        private int _range = 0;
         private int _matches = 0;
 
         public RepeatCounter(string targetWord = "", string searchPhrase = "")
@@ -102,6 +105,46 @@ namespace WordCounter
         public List<string> GetSearchList()
         {
             return _searchList;
+        }
+
+        public void IncrementStart()
+        {
+            _start++;
+        }
+
+        public int GetStart()
+        {
+            return _start;
+        }
+
+        public void ReduceEnd()
+        {
+            _end--;
+        }
+
+        public int GetEnd()
+        {
+            return _end;
+        }
+
+        public void ResetCleanerValues()
+        {
+            _start = 0;
+            _end = 0;
+            _range = 0;
+        }
+
+        public void SetSubstringValues(string word)
+        {
+            _end = word.Length - 1;
+            while(Char.IsPunctuation(word[_start]))
+            {
+                IncrementStart();
+            }
+            while(Char.IsPunctuation(word[_end]))
+            {
+                ReduceEnd();
+            }
         }
     }
 }

@@ -177,18 +177,37 @@ namespace WordCounter.Tests
             //Act
             newRepeatCounter.SetSearchList();
             List<string> result = newRepeatCounter.GetSearchList();
-            foreach(string word in expected)
-            {
-                Console.WriteLine(word);
-            }
-            Console.WriteLine();
-            foreach(string word in result)
-            {
-                Console.WriteLine(word);
-            }
 
             //Assert
             CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void SetSubstringValue_SetsStartValue_Int()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter();
+
+            //Act
+            newRepeatCounter.SetSubstringValues("'can'");
+            int result = newRepeatCounter.GetStart();
+
+            //Assert
+            Assert.AreEqual(1, result);
+        }
+
+        [TestMethod]
+        public void SetSubstringValue_SetsEndValue_Int()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter();
+
+            //Act
+            newRepeatCounter.SetSubstringValues("'can'");
+            int result = newRepeatCounter.GetEnd();
+
+            //Assert
+            Assert.AreEqual(3, result);
         }
     }
 }
