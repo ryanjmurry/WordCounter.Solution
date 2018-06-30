@@ -51,13 +51,13 @@ namespace WordCounter
 
         public void SetSearchPhraseToLower()
         {
-            _searchPhrase = this.GetSearchPhrase().ToLower();
+            _searchPhrase = GetSearchPhrase().ToLower();
         }
 
         public void SetSearchList(string searchPhrase)
         {
-            this.SetSearchPhrase(searchPhrase);
-            this.SetSearchPhraseToLower();
+            SetSearchPhrase(searchPhrase);
+            SetSearchPhraseToLower();
             _searchList = _searchPhrase.Split(' ').ToList();
         }
 
@@ -123,19 +123,19 @@ namespace WordCounter
         //     foreach(string word in _searchList)
         //     {
         //         _searchArray = word.ToCharArray();
-        //         this.SetArrayEnd();
+        //         SetArrayEnd();
         //         while(Char.IsPunctuation(_searchArray[_arrayStart]))
         //         {
-        //             this.IncrementArrayStart();
+        //             IncrementArrayStart();
         //         }
         //         while(Char.IsPunctuation(_searchArray[_arrayEnd]))
         //         {
-        //             this.ReduceArrayEnd();
+        //             ReduceArrayEnd();
         //         }
-        //         this.SetArrayRange();
+        //         SetArrayRange();
         //         // _cleanWord = new String(_searchArray, _arrayStart, _arrayRange);
         //         _cleanSearchList.Add(new String(_searchArray, _arrayStart, _arrayRange));
-        //         // this.ResetArrayCounters();
+        //         // ResetArrayCounters();
         //     }
         // }
         //
@@ -162,16 +162,16 @@ namespace WordCounter
             {
                 if (testWord == _targetWord)
                 {
-                    this.IncrementMatches();
+                    IncrementMatches();
                 }
             }
         }
 
         public int NumberOfMatches(string targetWord, string searchPhrase)
         {
-            this.SetTargetWord(targetWord);
-            this.SetSearchList(searchPhrase);
-            this.SetMatches();
+            SetTargetWord(targetWord);
+            SetSearchList(searchPhrase);
+            SetMatches();
             return _matches;
         }
     }
