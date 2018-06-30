@@ -19,6 +19,7 @@ namespace WordCounter
         {
             _targetWord = targetWord.ToLower();
             _searchPhrase = searchPhrase.ToLower();
+            SetSearchList();
         }
 
         public string GetTargetWord()
@@ -117,6 +118,16 @@ namespace WordCounter
             return _end;
         }
 
+        public void IncrementListIndex()
+        {
+            _listIndex++;
+        }
+
+        public int GetListIndex()
+        {
+            return _listIndex;
+        }
+
         public void ResetCleanerValues()
         {
             _start = 0;
@@ -147,7 +158,12 @@ namespace WordCounter
 
         public void CleanList()
         {
-
+            foreach(string word in _searchList)
+            {
+                ReplaceWord(word, _listIndex);
+                IncrementListIndex();
+                ResetCleanerValues();
+            }
         }
     }
 }

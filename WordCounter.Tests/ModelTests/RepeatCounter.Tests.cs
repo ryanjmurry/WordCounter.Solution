@@ -174,7 +174,6 @@ namespace WordCounter.Tests
             List<string> expected = new List<string>() { "i", "can", "swim!" };
 
             //Act
-            newRepeatCounter.SetSearchList();
             List<string> result = newRepeatCounter.GetSearchList();
 
             //Assert
@@ -213,17 +212,23 @@ namespace WordCounter.Tests
         public void ReplaceWord_ReplacePunctuatedWordWithCleanWord_String()
         {
             //Arrange
-            RepeatCounter newRepeatCounter = new RepeatCounter(" ", "'tiger'");
-            newRepeatCounter.SetSearchList();
+            RepeatCounter newRepeatCounter = new RepeatCounter("", "'can'");
 
             //Act
-            newRepeatCounter.ReplaceWord("'tiger'", 0);
+            newRepeatCounter.ReplaceWord("'can'", 0);
             List<string> newList = newRepeatCounter.GetSearchList();
             string result = newList[0];
 
             //Assert
-            Assert.AreEqual("tiger", result);
+            Assert.AreEqual("can", result);
         }
+
+        // [TestMethod]
+        // public void CleanList_CleanSearchListOfAnyBookendPunctuation_List()
+        // {
+        //     //Arrange
+        //     RepeatCounter newRepeatCounter = new RepeatCounter("", "i can swim");
+        // }
     }
 }
 
