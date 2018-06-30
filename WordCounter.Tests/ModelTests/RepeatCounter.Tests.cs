@@ -7,6 +7,7 @@ namespace WordCounter.Tests
     [TestClass]
     public class RepeatCounterTest
     {
+
         [TestMethod]
         public void GetSetTargetWord_GetsAndSetsTargetWord_String()
         {
@@ -18,6 +19,112 @@ namespace WordCounter.Tests
 
             //Assert
             Assert.AreEqual("can", result);
+        }
+
+        [TestMethod]
+        public void CheckAllowedCharacters_ChecksForAllowableCharacaters_True()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can");
+
+            //Act
+            bool result = newRepeatCounter.CheckAllowedCharacters();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void CheckBookendPunctuation_ChecksForTrailingAndProceedingPunctuation_False()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can");
+
+            //Act
+            bool result = newRepeatCounter.CheckBookendPunctuation();
+
+            //Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWordPunctuation_ValidatesLetterWord_True()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWord_ValidatesNumericWord_True()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("123");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWord_ValidatesApostrophes_True()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can't");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWord_ValidatesDashes_True()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("in-class");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWord_RejectsQuotes_False()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("'can'");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+
+            //Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWord_RejectsSpaces_False()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can not");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+            string pos = newRepeatCounter.GetTargetWord();
+            Console.WriteLine(pos[3]);
+
+            //Assert
+            Assert.AreEqual(false, result);
         }
     }
 }

@@ -22,9 +22,64 @@ namespace WordCounter
             return _targetWord;
         }
 
+        //Should be in main? Asking for user input...
+        // public void SetTargetWord()
+        // {
+        //     Console.WriteLine("Please enter a target word to check for: ");
+        //     _targetWord = Console.ReadLine();
+        // }
+
         public string GetSearchPhrase()
         {
             return _searchPhrase;
+        }
+
+        public bool CheckBookendPunctuation()
+        {
+            if (Char.IsPunctuation(_targetWord[0]) || Char.IsPunctuation(_targetWord[_targetWord.Length - 1]))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CheckAllowedCharacters()
+        {
+            foreach(char letter in _targetWord)
+            {
+                if(Char.IsWhiteSpace(letter))
+                {
+                    return false;
+                }
+                else
+                {
+                    if(!Char.IsNumber(letter) || !Char.IsLetter(letter) || letter != '\'' || letter != '-')
+                    {
+
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool ValidateTargetWord()
+        {
+            GetTargetWord();
+            if (CheckBookendPunctuation())
+            {
+                return false;
+            }
+            else
+            {
+                if(CheckAllowedCharacters())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
     }
 }
