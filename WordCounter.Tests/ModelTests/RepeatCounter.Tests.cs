@@ -9,7 +9,7 @@ namespace WordCounter.Tests
     {
 
         [TestMethod]
-        public void GetSetTargetWord_GetsAndSetsTargetWord_String()
+        public void GetTargetWord_GetsTargetWord_String()
         {
             //Arrange
             RepeatCounter newRepeatCounter = new RepeatCounter("can");
@@ -142,10 +142,23 @@ namespace WordCounter.Tests
         }
 
         [TestMethod]
-        public void GetSetSearchPhrase_GetsAndSetsSearchPhrase_String()
+        public void GetSearchPhrase_GetsSearchPhrase_String()
         {
             //Arrange
             RepeatCounter newRepeatCounter = new RepeatCounter("can", "i can swim!");
+
+            //Act
+            string result = newRepeatCounter.GetSearchPhrase();
+
+            //Assert
+            Assert.AreEqual("i can swim!", result);
+        }
+
+        [TestMethod]
+        public void SetSearchPhrase_SetSearchPhraseToLowerCase_String()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can", "I CAN SWIM!");
 
             //Act
             string result = newRepeatCounter.GetSearchPhrase();

@@ -14,7 +14,7 @@ namespace WordCounter
         public RepeatCounter(string targetWord = "", string searchPhrase = "")
         {
             _targetWord = targetWord;
-            _searchPhrase = searchPhrase;
+            _searchPhrase = searchPhrase.ToLower();
         }
 
         public string GetTargetWord()
@@ -93,6 +93,8 @@ namespace WordCounter
         {
             return _searchPhrase;
         }
+
+
     }
 }
 
