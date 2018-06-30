@@ -155,7 +155,7 @@ namespace WordCounter.Tests
         }
 
         [TestMethod]
-        public void SetSearchPhrase_SetSearchPhraseToLowerCase_String()
+        public void GetSearchPhrase_GetsSearchPhraseInLowerCase_String()
         {
             //Arrange
             RepeatCounter newRepeatCounter = new RepeatCounter("can", "I CAN SWIM!");
@@ -165,6 +165,30 @@ namespace WordCounter.Tests
 
             //Assert
             Assert.AreEqual("i can swim!", result);
+        }
+
+        [TestMethod]
+        public void GetSetSearchList_GetsAndSetsSearchListFromSearchPhrase_List()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can", "i can swim!");
+            List<string> expected = new List<string>() { "i", "can", "swim!" };
+
+            //Act
+            newRepeatCounter.SetSearchList();
+            List<string> result = newRepeatCounter.GetSearchList();
+            foreach(string word in expected)
+            {
+                Console.WriteLine(word);
+            }
+            Console.WriteLine();
+            foreach(string word in result)
+            {
+                Console.WriteLine(word);
+            }
+
+            //Assert
+            CollectionAssert.AreEqual(expected, result);
         }
     }
 }

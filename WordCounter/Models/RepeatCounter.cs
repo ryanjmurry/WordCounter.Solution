@@ -94,7 +94,15 @@ namespace WordCounter
             return _searchPhrase;
         }
 
+        public void SetSearchList()
+        {
+            _searchList = _searchPhrase.Split(' ').ToList();
+        }
 
+        public List<string> GetSearchList()
+        {
+            return _searchList;
+        }
     }
 }
 
