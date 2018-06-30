@@ -25,16 +25,18 @@ A program that checks how frequently a word appears in a given string.
 
 ## Known Bugs
 
+### On master Branch
 * Not able to handle edge case scenarios, such as when a word is wrapped in parentheses or if the word is followed by a period or comma
 
-* Handles first 6 specs and last spec, although it will not handle edge cases
+### On cleaner-attempt Branch
+* No known bugs at this time. Waiting to merge cleaner-attempt to master until after project's code review.
 
 
 ## Setup on OSX
 
 * Download and install .Net Core 1.1.4
 * Download and install Mono
-* Clone the repo
+* Clone cleaner-attempt repo
 * Run `dotnet restore` from within the project directory
 
 ## Contribution Requirements
