@@ -140,6 +140,19 @@ namespace WordCounter.Tests
             //Assert
             Assert.AreEqual("can", result);
         }
+
+        [TestMethod]
+        public void GetSetSearchPhrase_GetsAndSetsSearchPhrase_String()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can", "i can swim!");
+
+            //Act
+            string result = newRepeatCounter.GetSearchPhrase();
+
+            //Assert
+            Assert.AreEqual("i can swim!", result);
+        }
     }
 }
 

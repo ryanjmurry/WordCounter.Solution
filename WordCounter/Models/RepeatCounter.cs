@@ -29,11 +29,6 @@ namespace WordCounter
         //     _targetWord = Console.ReadLine();
         // }
 
-        public string GetSearchPhrase()
-        {
-            return _searchPhrase;
-        }
-
         public bool CheckBookendPunctuation()
         {
             if (Char.IsPunctuation(_targetWord[0]) || Char.IsPunctuation(_targetWord[_targetWord.Length - 1]))
@@ -92,6 +87,11 @@ namespace WordCounter
             {
                 Console.WriteLine("Sorry, you did not enter a valid word. Try using only letters, numbers, hashes (inside word), or apostrphes (inside word).");
             }
+        }
+
+        public string GetSearchPhrase()
+        {
+            return _searchPhrase;
         }
     }
 }
