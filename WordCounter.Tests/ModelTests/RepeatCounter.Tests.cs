@@ -223,12 +223,20 @@ namespace WordCounter.Tests
             Assert.AreEqual("can", result);
         }
 
-        // [TestMethod]
-        // public void CleanList_CleanSearchListOfAnyBookendPunctuation_List()
-        // {
-        //     //Arrange
-        //     RepeatCounter newRepeatCounter = new RepeatCounter("", "i can swim");
-        // }
+        [TestMethod]
+        public void CleanList_CleanSearchListOfAnyBookendPunctuation_List()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("", "'can'");
+            List<string> expected = new List<string>() {"can"};
+
+            //Act
+            newRepeatCounter.CleanList();
+            List<string> actual = newRepeatCounter.GetSearchList();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
     }
 }
 

@@ -158,11 +158,11 @@ namespace WordCounter
 
         public void CleanList()
         {
-            foreach(string word in _searchList)
+            for(int i = 0; i < _searchList.Count; i++)
             {
-                ReplaceWord(word, _listIndex);
-                IncrementListIndex();
-                ResetCleanerValues();
+                ReplaceWord(_searchList[i], _listIndex);
+                // IncrementListIndex();
+                // ResetCleanerValues();
             }
         }
     }
