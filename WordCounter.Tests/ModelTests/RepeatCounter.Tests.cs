@@ -126,6 +126,20 @@ namespace WordCounter.Tests
             //Assert
             Assert.AreEqual(false, result);
         }
+
+        [TestMethod]
+        public void SetTargetToLower_SetsValidTargetWordToLowerCase_String()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("CAN");
+
+            //Act
+            newRepeatCounter.SetTargetToLower();
+            string result = newRepeatCounter.GetTargetWord();
+
+            //Assert
+            Assert.AreEqual("can", result);
+        }
     }
 }
 

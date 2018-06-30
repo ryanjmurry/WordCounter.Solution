@@ -81,6 +81,18 @@ namespace WordCounter
                 }
             }
         }
+
+        public void SetTargetToLower()
+        {
+            if(ValidateTargetWord())
+            {
+                _targetWord = _targetWord.ToLower();
+            }
+            else
+            {
+                Console.WriteLine("Sorry, you did not enter a valid word. Try using only letters, numbers, hashes (inside word), or apostrphes (inside word).");
+            }
+        }
     }
 }
 
