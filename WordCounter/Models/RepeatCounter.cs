@@ -12,11 +12,12 @@ namespace WordCounter
         private int _start = 0;
         private int _end = 0;
         private int _range = 0;
+        private int _listIndex = 0;
         private int _matches = 0;
 
         public RepeatCounter(string targetWord = "", string searchPhrase = "")
         {
-            _targetWord = targetWord;
+            _targetWord = targetWord.ToLower();
             _searchPhrase = searchPhrase.ToLower();
         }
 
@@ -60,6 +61,7 @@ namespace WordCounter
             return true;
         }
 
+        //to be run in main()
         public bool ValidateTargetWord()
         {
             GetTargetWord();
@@ -77,18 +79,6 @@ namespace WordCounter
                 {
                     return false;
                 }
-            }
-        }
-
-        public void SetTargetToLower()
-        {
-            if(ValidateTargetWord())
-            {
-                _targetWord = _targetWord.ToLower();
-            }
-            else
-            {
-                Console.WriteLine("Sorry, you did not enter a valid word. Try using only letters, numbers, hashes (inside word), or apostrphes (inside word).");
             }
         }
 
@@ -145,6 +135,19 @@ namespace WordCounter
             {
                 ReduceEnd();
             }
+        }
+
+        public void ReplaceWord(string word, int index)
+        {
+            SetSubstringValues(word);
+            _range = (_end - _start) + 1;
+            string cleanWord = word.Substring(_start, _range);
+            _searchList[index] = cleanWord;
+        }
+
+        public void CleanList()
+        {
+
         }
     }
 }

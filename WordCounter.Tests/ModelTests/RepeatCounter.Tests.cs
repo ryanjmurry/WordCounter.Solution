@@ -134,7 +134,6 @@ namespace WordCounter.Tests
             RepeatCounter newRepeatCounter = new RepeatCounter("CAN");
 
             //Act
-            newRepeatCounter.SetTargetToLower();
             string result = newRepeatCounter.GetTargetWord();
 
             //Assert
@@ -208,6 +207,22 @@ namespace WordCounter.Tests
 
             //Assert
             Assert.AreEqual(3, result);
+        }
+
+        [TestMethod]
+        public void ReplaceWord_ReplacePunctuatedWordWithCleanWord_String()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter(" ", "'tiger'");
+            newRepeatCounter.SetSearchList();
+
+            //Act
+            newRepeatCounter.ReplaceWord("'tiger'", 0);
+            List<string> newList = newRepeatCounter.GetSearchList();
+            string result = newList[0];
+
+            //Assert
+            Assert.AreEqual("tiger", result);
         }
     }
 }
