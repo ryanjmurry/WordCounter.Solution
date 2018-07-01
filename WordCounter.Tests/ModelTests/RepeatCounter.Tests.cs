@@ -48,6 +48,19 @@ namespace WordCounter.Tests
         }
 
         [TestMethod]
+        public void CheckBookendPunctuation_ChecksForTrailingAndProceedingPunctuation_True()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("'can'");
+
+            //Act
+            bool result = newRepeatCounter.CheckBookendPunctuation();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
         public void ValidateTargetWordPunctuation_ValidatesLetterWord_True()
         {
             //Arrange
