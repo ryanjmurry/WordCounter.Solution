@@ -59,27 +59,6 @@ namespace WordCounter
             return true;
         }
 
-        // //to be run in main()
-        // public bool ValidateTargetWord()
-        // {
-        //     GetTargetWord();
-        //     if (CheckBookendPunctuation())
-        //     {
-        //         return false;
-        //     }
-        //     else
-        //     {
-        //         if(CheckAllowedCharacters())
-        //         {
-        //             return true;
-        //         }
-        //         else
-        //         {
-        //             return false;
-        //         }
-        //     }
-        // }
-
         //to be run in main()
         public bool ValidateTargetWord()
         {
