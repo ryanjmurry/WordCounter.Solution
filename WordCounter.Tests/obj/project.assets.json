@@ -8490,11 +8490,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ryanmurry/Desktop/WordCounter.Solution/WordCounter.Tests/WordCounter.Tests.csproj",
+      "projectUniqueName": "/Users/ryanmurry/Desktop/epicodus/Code Reviews/WordCounter.Solution/WordCounter.Tests/WordCounter.Tests.csproj",
       "projectName": "WordCounter.Tests",
-      "projectPath": "/Users/ryanmurry/Desktop/WordCounter.Solution/WordCounter.Tests/WordCounter.Tests.csproj",
+      "projectPath": "/Users/ryanmurry/Desktop/epicodus/Code Reviews/WordCounter.Solution/WordCounter.Tests/WordCounter.Tests.csproj",
       "packagesPath": "/Users/ryanmurry/.nuget/packages/",
-      "outputPath": "/Users/ryanmurry/Desktop/WordCounter.Solution/WordCounter.Tests/obj/",
+      "outputPath": "/Users/ryanmurry/Desktop/epicodus/Code Reviews/WordCounter.Solution/WordCounter.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/ryanmurry/.nuget/NuGet/NuGet.Config"
@@ -8509,8 +8509,8 @@
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
-            "/Users/ryanmurry/Desktop/WordCounter.Solution/WordCounter/WordCounter.csproj": {
-              "projectPath": "/Users/ryanmurry/Desktop/WordCounter.Solution/WordCounter/WordCounter.csproj"
+            "/Users/ryanmurry/Desktop/epicodus/Code Reviews/WordCounter.Solution/WordCounter/WordCounter.csproj": {
+              "projectPath": "/Users/ryanmurry/Desktop/epicodus/Code Reviews/WordCounter.Solution/WordCounter/WordCounter.csproj"
             }
           }
         }

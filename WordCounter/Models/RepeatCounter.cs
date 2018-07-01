@@ -6,6 +6,7 @@ namespace WordCounter
 {
     public class RepeatCounter
     {
+        //object properties
         private string _targetWord = "";
         private string _searchPhrase = "";
         private List<string> _searchList = new List<string>() { };
@@ -15,6 +16,7 @@ namespace WordCounter
         private int _listIndex = 0;
         private int _matches = 0;
 
+        //object constructor
         public RepeatCounter(string targetWord = "", string searchPhrase = "")
         {
             _targetWord = targetWord.ToLower();
@@ -27,6 +29,7 @@ namespace WordCounter
             return _targetWord;
         }
 
+        //checks for punctuation at beginning and end of word
         public bool CheckBookendPunctuation()
         {
             if (Char.IsPunctuation(_targetWord[0]) || Char.IsPunctuation(_targetWord[_targetWord.Length - 1]))
@@ -36,6 +39,7 @@ namespace WordCounter
             return false;
         }
 
+        //checks target word for numbers, letters, apostrophes, and dashes
         public bool CheckAllowedCharacters()
         {
             foreach(char letter in _targetWord)
@@ -55,24 +59,38 @@ namespace WordCounter
             return true;
         }
 
+        // //to be run in main()
+        // public bool ValidateTargetWord()
+        // {
+        //     GetTargetWord();
+        //     if (CheckBookendPunctuation())
+        //     {
+        //         return false;
+        //     }
+        //     else
+        //     {
+        //         if(CheckAllowedCharacters())
+        //         {
+        //             return true;
+        //         }
+        //         else
+        //         {
+        //             return false;
+        //         }
+        //     }
+        // }
+
         //to be run in main()
         public bool ValidateTargetWord()
         {
             GetTargetWord();
-            if (CheckBookendPunctuation())
+            if (CheckBookendPunctuation() || !CheckAllowedCharacters())
             {
                 return false;
             }
             else
             {
-                if(CheckAllowedCharacters())
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
             }
         }
 
