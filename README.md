@@ -12,30 +12,31 @@ A program that checks how frequently a word appears in a given string.
 
 | Behavior | Input | Output | Reasoning |
 |----------|-------|--------|-----------|
-| Sets the target word | "can" | target word = "can" | include word with all lower case letters with no special characters |
-| Checks to make sure the target word does not contain punctuation | "c@n" | target word = invalid | include word with all lower case letters and one punctuation character included |
-| Converts the target word to lowercase to make program case-insensitive | "CAN" | target word = "can" |include word with uppercase letters and no special characters |
-| Sets a search phrase | "i can open the can of tuna" | search phrase = "i can open a can of tuna" | include a phrase consisting of all lower case letters |
-| Converts the search phrase to lower case to make program case-insensitive | "I CAN OPEN THE CAN OF TUNA." | search phrase is "i can open the can of tuna." | include a phrase consisting of uppercase letters
-| Stores each word in the search phrase in a search list | "I can open the can of tuna." | search list = { "i", "can", "open", "the", "can", "of", "tuna." } | stores a list of lowercase strings into a list with no matching words containing beginning of ending punctuation
-| takes each search element in the list and turns it into an array of individual characters | "can" | array = { 'c', 'a', 'n' } | necessary to check if each character is a punctuation mark |
-| Combs through array of characters generated from the search list and creates a clean string with no proceeding or trailing punctuation marks | { ' ' ', 'c', 'a', 'n', ' ' ' } | clean string = "can" | will allow for matches even if the word is in quotes, at the end of a sentence, etc.
-| Adds the clean string to a new clean list | clean string = "can" | clean list = { "can" } | will allow the word to be matched against the target word |
-| Compares the test word to each word in the clean list | "I can open the can of tuna" | 1. "can" vs. "i" = false </br> 2. "can" vs. "can" = true </br> 3. "can" vs. "open" = false </br> 4. "can" vs. "the" = false </br> 5. "can" vs. "can" = true </br> 6. "can" vs. "of" = false </br> 7. "can" vs. "tuna" = false </br> | If it is true, it will signify that there is a match in the clean list |
-| Determines the number of times the target word appears in the clean list| 1. "I can open the can of tuna." </br> 2. "I 'can' open the can of tuna." | 1. matches = 2 </br> 2. matches = 1 | Allows program to return the number of matches in a given phrase to a target word |
+| Gets and sets the **target word** | can | **target word** = can | all letters lowercase and no special characters |
+| Checks if the **target word** contains only numbers, letters, and/or single quotes | 1. can </br> 2. c@n </br> 3. can't | 1. **true** </br> 2. **false** </br> 3. **true** | 1. all lowercase with no punctuation at all </br> 2. all lowercase with exempt punctuation </br> 3. all lowercase with allowed punctuation |
+| Convert **target word** to lowercase | CAN | **target word** = can | all letters uppercase with no exempt punctuation |
+| Gets and sets the **search phrase** | i can swim! | **search phrase** = i can swim! | smallest lowercase sentence including the **target word** |
+| Converts **search phrase** to lower case | I CAN SWIM! | **search phrase** = i can swim! | smallest uppercase sentence including the **target word** |
+| Takes **search phrase** and stores each word into a **search list** | i can swim | **search list** = { i, can, swim! } | smallest lowercase sentence including the **target word** |
+| Removes any trailing and proceeding punctuation marks from each word in the list | { i, 'can', swim! } | **i** = i </br> **'can'** = can </br> **swim!** = swim | smallest lowercase sentence with both proceeding and trailing punctuation marks |
+| Replaces the original word in the **search list** with the **clean word** | { i, 'can', swim! } | { i, can, swim } | list of words containing all lowercase letters with both proceeding and trailing punctuation marks |
+| Compare **target word** to each **clean word** in the **search list** | **target word** = can </br> **search list** {i, can, swim} | can vs. i = **false** </br> can vs. can = **true** </br> can vs. swim = **false** | a lowercase **target word** with no punctuation compared to a list of lowercase words containing no punctuation whatsoever |
+| Return number of matching words | **target word** = can </br> **search list** {i, can, swim} | 1 | single match, no punctuation, all lowercase |
 
 ## Known Bugs
 
+### On master Branch
 * Not able to handle edge case scenarios, such as when a word is wrapped in parentheses or if the word is followed by a period or comma
 
-* Handles first 6 specs and last spec, although it will not handle edge cases
+### On cleaner-attempt Branch
+* No known bugs at this time. Waiting to merge cleaner-attempt to master until after project's code review.
 
 
 ## Setup on OSX
 
 * Download and install .Net Core 1.1.4
 * Download and install Mono
-* Clone the repo
+* Clone cleaner-attempt repo
 * Run `dotnet restore` from within the project directory
 
 ## Contribution Requirements

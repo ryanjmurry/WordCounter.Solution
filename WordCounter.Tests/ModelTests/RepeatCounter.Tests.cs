@@ -7,202 +7,325 @@ namespace WordCounter.Tests
     [TestClass]
     public class RepeatCounterTest
     {
+
         [TestMethod]
-        public void GetSetTargetWord_GetsAndSetsTargetWord_String()
+        public void GetTargetWord_GetsTargetWord_String()
         {
             //Arrange
-            RepeatCounter newObject = new RepeatCounter();
-            newObject.SetTargetWord("can");
+            RepeatCounter newRepeatCounter = new RepeatCounter("can");
 
             //Act
-            string result = newObject.GetTargetWord();
+            string result = newRepeatCounter.GetTargetWord();
 
             //Assert
             Assert.AreEqual("can", result);
         }
 
         [TestMethod]
-        public void CheckTargetWordForPunctuation_ChecksTargetWordForPunctuation_True()
+        public void CheckAllowedCharacters_ChecksForAllowableCharacaters_True()
         {
             //Arrange
-            RepeatCounter newObject = new RepeatCounter();
-            newObject.SetTargetWord("can");
+            RepeatCounter newRepeatCounter = new RepeatCounter("can");
 
             //Act
-            bool result = newObject.CheckTargetWordForPunctuation();
+            bool result = newRepeatCounter.CheckAllowedCharacters();
 
             //Assert
             Assert.AreEqual(true, result);
         }
 
         [TestMethod]
-        public void CheckTargetWordForPunctuation_ChecksTargetWordForPunctuation_False()
+        public void CheckBookendPunctuation_ChecksForTrailingAndProceedingPunctuation_False()
         {
             //Arrange
-            RepeatCounter newObject = new RepeatCounter();
-            newObject.SetTargetWord("c@n");
+            RepeatCounter newRepeatCounter = new RepeatCounter("can");
 
             //Act
-            bool result = newObject.CheckTargetWordForPunctuation();
+            bool result = newRepeatCounter.CheckBookendPunctuation();
 
             //Assert
             Assert.AreEqual(false, result);
         }
 
         [TestMethod]
-        public void SetTargetWord_SetsTargetWordToLowerCase_String()
+        public void CheckBookendPunctuation_ChecksForTrailingAndProceedingPunctuation_True()
         {
             //Arrange
-            RepeatCounter newObject = new RepeatCounter();
-            newObject.SetTargetWord("CAN");
+            RepeatCounter newRepeatCounter = new RepeatCounter("'can'");
 
             //Act
-            string result = newObject.GetTargetWord();
+            bool result = newRepeatCounter.CheckBookendPunctuation();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWordPunctuation_ValidatesLetterWord_True()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWord_ValidatesNumericWord_True()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("123");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWord_ValidatesApostrophes_True()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can't");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWord_ValidatesDashes_True()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("in-line");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWord_RejectsQuotes_False()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("'can'");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+
+            //Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
+        public void ValidateTargetWord_RejectsSpaces_False()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can not");
+
+            //Act
+            bool result = newRepeatCounter.ValidateTargetWord();
+            string pos = newRepeatCounter.GetTargetWord();
+            Console.WriteLine(pos[3]);
+
+            //Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
+        public void SetTargetToLower_SetsValidTargetWordToLowerCase_String()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("CAN");
+
+            //Act
+            string result = newRepeatCounter.GetTargetWord();
 
             //Assert
             Assert.AreEqual("can", result);
         }
 
         [TestMethod]
-        public void GetSetSearchPhrase_GetsAndSetsSearchPhrase_String()
+        public void GetSearchPhrase_GetsSearchPhrase_String()
         {
             //Arrange
-            RepeatCounter newObject = new RepeatCounter();
-            newObject.SetSearchPhrase("i can open the can of tuna.");
+            RepeatCounter newRepeatCounter = new RepeatCounter("can", "i can swim!");
 
             //Act
-            string result = newObject.GetSearchPhrase();
+            string result = newRepeatCounter.GetSearchPhrase();
 
             //Assert
-            Assert.AreEqual("i can open the can of tuna.", result);
+            Assert.AreEqual("i can swim!", result);
         }
 
         [TestMethod]
-        public void SetSearchPhraseToLower_SetsSearchPhraseToLowerCase_String()
+        public void GetSearchPhrase_GetsSearchPhraseInLowerCase_String()
         {
             //Arrange
-            RepeatCounter newObject = new RepeatCounter();
-            newObject.SetSearchPhrase("I CAN OPEN THE CAN OF TUNA.");
+            RepeatCounter newRepeatCounter = new RepeatCounter("can", "I CAN SWIM!");
 
             //Act
-            newObject.SetSearchPhraseToLower();
-            string result = newObject.GetSearchPhrase();
+            string result = newRepeatCounter.GetSearchPhrase();
 
             //Assert
-            Assert.AreEqual("i can open the can of tuna.", result);
+            Assert.AreEqual("i can swim!", result);
         }
 
         [TestMethod]
         public void GetSetSearchList_GetsAndSetsSearchListFromSearchPhrase_List()
         {
             //Arrange
-            RepeatCounter newObject = new RepeatCounter();
-            newObject.SetSearchList("i can open the can of tuna.");
+            RepeatCounter newRepeatCounter = new RepeatCounter("can", "i can swim!");
+            List<string> expected = new List<string>() { "i", "can", "swim!" };
 
             //Act
-            List<string> expected = new List<string>() { "i", "can", "open", "the", "can", "of", "tuna." };
-            List<string> result = newObject.GetSearchList();
+            List<string> result = newRepeatCounter.GetSearchList();
 
             //Assert
             CollectionAssert.AreEqual(expected, result);
         }
 
         [TestMethod]
-        public void SetArrayEnd_SetsIndexAtEndOfArrayToSearchAt_Int()
+        public void SetSubstringValue_SetsStartValue_Int()
         {
             //Arrange
-            RepeatCounter newObject = new RepeatCounter();
+            RepeatCounter newRepeatCounter = new RepeatCounter();
 
             //Act
-            newObject.SetArrayEnd("'can'");
-            int result = newObject.GetArrayEnd();
-
-            //Assert
-            Assert.AreEqual(4, result);
-        }
-
-        //------------Buggy Edge Case Tests-----------------//
-
-        // [TestMethod]
-        // public void GetSetCleanSearchList_GetsAndSetsCleanSearchListFromSearchList_List()
-        // {
-        //     //Arrange
-        //     RepeatCounter newObject = new RepeatCounter();
-        //     newObject.SetSearchList("'can'");
-        //
-        //     //Act
-        //     newObject.SetCleanSearchList();
-        //     List<string> expected = new List<string>() { "can" };
-        //     List<string> result = newObject.GetSearchList();
-        //     foreach(string word in expected)
-        //     {
-        //         Console.WriteLine(word);
-        //     }
-        //     Console.WriteLine("");
-        //     foreach(string word in result)
-        //     {
-        //         Console.WriteLine(word);
-        //     }
-        //     Console.WriteLine(newObject.GetArrayStart());
-        //     Console.WriteLine(newObject.GetArrayEnd());
-        //
-        //
-        //     CollectionAssert.AreEqual(expected, result);
-        // }
-
-        //------------End of Buggy Edge Case Tests-----------------//
-
-        [TestMethod]
-        public void IncrementMatches_IncrementNumberOfMatches_Int()
-        {
-            //Arrange
-            RepeatCounter newObject = new RepeatCounter();
-
-            //Act
-            newObject.IncrementMatches();
-            int result = newObject.GetMatches();
+            newRepeatCounter.SetSubstringValues("'can'");
+            int result = newRepeatCounter.GetStart();
 
             //Assert
             Assert.AreEqual(1, result);
         }
 
         [TestMethod]
-        public void SetGetMatches_SetAndGetNumberOfMatches_Int()
+        public void SetSubstringValue_SetsEndValue_Int()
         {
             //Arrange
-            RepeatCounter newObject = new RepeatCounter();
-            newObject.SetTargetWord("can");
-            newObject.SetSearchList("I can open a can of tuna.");
+            RepeatCounter newRepeatCounter = new RepeatCounter();
 
             //Act
-            newObject.SetMatches();
-            int result = newObject.GetMatches();
+            newRepeatCounter.SetSubstringValues("'can'");
+            int result = newRepeatCounter.GetEnd();
+
+            //Assert
+            Assert.AreEqual(3, result);
+        }
+
+        [TestMethod]
+        public void ReplaceWord_ReplacePunctuatedWordWithCleanWord_String()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("", "'can'");
+
+            //Act
+            newRepeatCounter.ReplaceWord("'can'", 0);
+            List<string> newList = newRepeatCounter.GetSearchList();
+            string result = newList[0];
+
+            //Assert
+            Assert.AreEqual("can", result);
+        }
+
+        [TestMethod]
+        public void CleanList_CleanSingleElementSearchListOfAnyBookendPunctuation_List()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("", "'can'");
+            List<string> expected = new List<string>() {"can"};
+
+            //Act
+            newRepeatCounter.CleanList();
+            List<string> actual = newRepeatCounter.GetSearchList();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CleanList_CleanSearchListOfAnyBookendPunctuation_List()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("", "i 'can' swim!");
+            List<string> expected = new List<string>() { "i", "can", "swim" };
+
+            //Act
+            newRepeatCounter.CleanList();
+            List<string> actual = newRepeatCounter.GetSearchList();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Matches_DeterminesNumberOfMatches1_Int()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can", "i can swim");
+
+            //Act
+            int result = newRepeatCounter.Matches();
+
+            //Assert
+            Assert.AreEqual(1, result);
+        }
+
+        [TestMethod]
+        public void Matches_DeterminesNumberOfMatches2_Int()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can", "I CAN SWIM");
+
+            //Act
+            int result = newRepeatCounter.Matches();
+
+            //Assert
+            Assert.AreEqual(1, result);
+        }
+
+        [TestMethod]
+        public void Matches_DeterminesNumberOfMatches3_Int()
+        {
+            //Arrange
+            RepeatCounter newRepeatCounter = new RepeatCounter("can", "I 'can' swim! Can you?");
+
+            //Act
+            int result = newRepeatCounter.Matches();
 
             //Assert
             Assert.AreEqual(2, result);
         }
 
         [TestMethod]
-        public void NumberOfMatches_NumberOfMatchesInSearchList_Int()
+        public void Matches_DeterminesNumberOfMatches4_Int()
         {
             //Arrange
-            RepeatCounter newObject = new RepeatCounter();
+            RepeatCounter newRepeatCounter = new RepeatCounter("in-line", "I like to in-line rollerskate.");
 
             //Act
-            int result = newObject.NumberOfMatches("CAN", "I CAN OPEN A CAN OF TUNA");
+            int result = newRepeatCounter.Matches();
 
             //Assert
-            Assert.AreEqual(2, result);
+            Assert.AreEqual(1, result);
         }
 
         [TestMethod]
-        public void NumberOfMatches_NumberOfMatchesInSearchListWithPunctuation_Int()
+        public void Matches_DeterminesNumberOfMatches5_Int()
         {
             //Arrange
-            RepeatCounter newObject = new RepeatCounter();
+            RepeatCounter newRepeatCounter = new RepeatCounter("don't", "Don't go there!");
 
             //Act
-            int result = newObject.NumberOfMatches("CAN", "I 'CAN' OPEN A CAN OF TUNA.");
+            int result = newRepeatCounter.Matches();
 
             //Assert
             Assert.AreEqual(1, result);
